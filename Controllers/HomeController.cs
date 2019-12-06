@@ -4,12 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using login_registration.Models;
+using bank_account.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 
-namespace login_registration.Controllers
+namespace bank_account.Controllers
 {
     public class HomeController : Controller
     {

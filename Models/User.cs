@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using System.Collections.Generic;
 
-namespace login_registration.Models
+namespace bank_account.Models
 {
     public class User
     {
@@ -32,6 +33,7 @@ namespace login_registration.Models
         [Compare("password", ErrorMessage = "Passwords do not match.")]
         [DataType(DataType.Password)]
         public string confirmPassword { get; set; }
+        public List<Transaction> CompletedTransactions { get; set; }
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
     }

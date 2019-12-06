@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace login_registration.Models
+namespace bank_account.Models
 {
     public class LoginUser
     {
