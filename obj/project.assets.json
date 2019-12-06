@@ -12155,9 +12155,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\login_registration.csproj",
-      "projectName": "login_registration",
-      "projectPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\login_registration.csproj",
+      "projectUniqueName": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\bank_account.csproj",
+      "projectName": "bank_account",
+      "projectPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\bank_account.csproj",
       "packagesPath": "C:\\Users\\Kathy\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Kathy\\Desktop\\Coding\\Coding Dojo\\csharp\\bank_account\\obj\\",
       "projectStyle": "PackageReference",

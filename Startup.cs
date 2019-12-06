@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using login_registration.Models;
+using bank_account.Models;
 
-namespace login_registration
+namespace bank_account
 {
     public class Startup
     {

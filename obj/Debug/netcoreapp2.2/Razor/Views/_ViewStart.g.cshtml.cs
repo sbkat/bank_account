@@ -14,17 +14,17 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #line 1 "C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\bank_account\Views\_ViewImports.cshtml"
-using login_registration;
+using bank_account;
 
 #line default
 #line hidden
 #line 2 "C:\Users\Kathy\Desktop\Coding\Coding Dojo\csharp\bank_account\Views\_ViewImports.cshtml"
-using login_registration.Models;
+using bank_account.Models;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"786737c25b0870a003a8a9670689fa4ae3868fd4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bfa427a661dbb8dfd2394efb1ee993727e2c8140", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

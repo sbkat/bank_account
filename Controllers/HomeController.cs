@@ -40,7 +40,7 @@ namespace bank_account.Controllers
                 dbContext.Users.Add(newUser);
                 dbContext.SaveChanges();
                 HttpContext.Session.SetString("User", newUser.email);
-                return RedirectToAction("Success");
+                return RedirectToAction("Account");
             }
         }
         else
@@ -70,8 +70,8 @@ namespace bank_account.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetString("User", existingUser.email);
-                    return RedirectToAction("Success");
+                    HttpContext.Session.SetString("User", userInDb.firstName);
+                    return RedirectToAction("Account");
                 }
             }
             else
@@ -85,8 +85,8 @@ namespace bank_account.Controllers
             return View("Login");
         }
     }
-    [HttpGet("success")]
-    public IActionResult Success()
+    [HttpGet("account")]
+    public IActionResult Account()
     {
         if(HttpContext.Session.GetString("User")==null)
         {
@@ -94,6 +94,7 @@ namespace bank_account.Controllers
         }
         else
         {
+            ViewBag.User = HttpContext.Session.GetString("User");
             return View();
         }
     }
