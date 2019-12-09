@@ -99,10 +99,8 @@ namespace bank_account.Controllers
             ViewBag.User = User;
             var thisUser = dbContext.Transactions.Where(u => u.UserId == HttpContext.Session.GetInt32("UserId")).ToList();
             ViewBag.Balance = thisUser.Sum(t => t.Amount);
-
             List<Transaction> allTransactions = dbContext.Transactions.OrderByDescending(t=>t.CreatedAt).ToList();
-
-            return View(new AddTransactionViewModel{ListofTransactions = allTransactions});
+            return View(new AddTransactionViewModel{ListofTransactions = thisUser});
         }
     }
     [HttpPost("transaction")]
