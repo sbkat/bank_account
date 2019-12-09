@@ -71,6 +71,7 @@ namespace bank_account.Controllers
                 else
                 {
                     HttpContext.Session.SetString("User", userInDb.firstName);
+                    HttpContext.Session.SetInt32("UserId", userInDb.UserId);
                     return RedirectToAction("Account");
                 }
             }
@@ -94,9 +95,28 @@ namespace bank_account.Controllers
         }
         else
         {
-            ViewBag.User = HttpContext.Session.GetString("User");
-            return View();
+            var User = HttpContext.Session.GetString("User");
+            ViewBag.User = User;
+            var thisUser = dbContext.Transactions.Where(u => u.UserId == HttpContext.Session.GetInt32("UserId")).ToList();
+            ViewBag.Balance = thisUser.Sum(t => t.Amount);
+
+            List<Transaction> allTransactions = dbContext.Transactions.OrderByDescending(t=>t.CreatedAt).ToList();
+
+            return View(new AddTransactionViewModel{ListofTransactions = allTransactions});
         }
+    }
+    [HttpPost("transaction")]
+    public IActionResult Transaction(AddTransactionViewModel transfer)
+    {
+        var newTransaction = new Transaction()
+        {
+            Amount = transfer.Transaction.Amount,
+            CreatedAt = DateTime.Now,
+            UserId = (int)HttpContext.Session.GetInt32("UserId"),
+        };
+        dbContext.Add(newTransaction);
+        dbContext.SaveChanges();
+        return RedirectToAction("Account");
     }
     public IActionResult Logout()
     {

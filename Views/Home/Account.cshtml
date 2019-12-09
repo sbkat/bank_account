@@ -1,4 +1,37 @@
+@model AddTransactionViewModel
+
 <div> 
     <h1 class="display-4">Welcome, @ViewBag.User!</h1>
     <a asp-action="Logout" asp-controller="home">Logout</a>
+</div>
+
+<div>
+    <h2 class="lead"><strong>Current Balance: $@ViewBag.Balance</strong></h2>
+    <hr>
+    <form asp-action="Transaction" asp-controller="home" method="post">
+        <label asp-for="@Model.Transaction.Amount"></label>
+        <input asp-for="@Model.Transaction.Amount">
+        <button class="btn btn-info">Submit</button>
+    </form>
+</div>
+<hr>
+<div>
+    <h2 class="lead"><strong>Transaction History</strong></h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var transaction in Model.ListofTransactions)
+            {
+            <tr>
+                <td>@transaction.Amount</td>
+                <td>@transaction.CreatedAt.Date.ToString("MM/dd/yyyy")</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </div>
