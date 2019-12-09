@@ -106,15 +106,25 @@ namespace bank_account.Controllers
     [HttpPost("transaction")]
     public IActionResult Transaction(AddTransactionViewModel transfer)
     {
-        var newTransaction = new Transaction()
+        var thisUser = dbContext.Transactions.Where(u => u.UserId == HttpContext.Session.GetInt32("UserId")).ToList();
+        ViewBag.Balance = thisUser.Sum(t => t.Amount);
+        if(ViewBag.Balance + transfer.Transaction.Amount > 0)
         {
-            Amount = transfer.Transaction.Amount,
-            CreatedAt = DateTime.Now,
-            UserId = (int)HttpContext.Session.GetInt32("UserId"),
-        };
-        dbContext.Add(newTransaction);
-        dbContext.SaveChanges();
-        return RedirectToAction("Account");
+            var newTransaction = new Transaction()
+            {
+                Amount = transfer.Transaction.Amount,
+                CreatedAt = DateTime.Now,
+                UserId = (int)HttpContext.Session.GetInt32("UserId"),
+            };
+            dbContext.Add(newTransaction);
+            dbContext.SaveChanges();
+            return RedirectToAction("Account");
+        }
+        else
+        {
+            ModelState.AddModelError("AddTransactionViewModel.Transaction.Amount", "Not enough funds in account to withdraw this amount. Try again.");
+            return RedirectToAction("Account");
+        }
     }
     public IActionResult Logout()
     {

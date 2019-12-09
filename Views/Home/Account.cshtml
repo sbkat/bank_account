@@ -9,6 +9,7 @@
     <h2 class="lead"><strong>Current Balance: $@ViewBag.Balance</strong></h2>
     <hr>
     <form asp-action="Transaction" asp-controller="home" method="post">
+        <span asp-validation-for="@Model.Transaction.Amount"></span>
         <label asp-for="@Model.Transaction.Amount"></label>
         <input asp-for="@Model.Transaction.Amount">
         <button class="btn btn-info">Submit</button>
